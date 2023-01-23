@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		31F13D79297E0BBA00718DF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F13D78297E0BBA00718DF8 /* AppDelegate.swift */; };
 		31F13D7B297E0BBA00718DF8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F13D7A297E0BBA00718DF8 /* SceneDelegate.swift */; };
-		31F13D7D297E0BBA00718DF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F13D7C297E0BBA00718DF8 /* ViewController.swift */; };
+		31F13D7D297E0BBA00718DF8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F13D7C297E0BBA00718DF8 /* HomeViewController.swift */; };
 		31F13D80297E0BBA00718DF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31F13D7E297E0BBA00718DF8 /* Main.storyboard */; };
 		31F13D82297E0BBB00718DF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31F13D81297E0BBB00718DF8 /* Assets.xcassets */; };
 		31F13D85297E0BBB00718DF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31F13D83297E0BBB00718DF8 /* LaunchScreen.storyboard */; };
+		31F13D8D297E0E2700718DF8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F13D8C297E0E2700718DF8 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		31F13D75297E0BBA00718DF8 /* BikePlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BikePlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F13D78297E0BBA00718DF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31F13D7A297E0BBA00718DF8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		31F13D7C297E0BBA00718DF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		31F13D7C297E0BBA00718DF8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		31F13D7F297E0BBA00718DF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		31F13D81297E0BBB00718DF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31F13D84297E0BBB00718DF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31F13D86297E0BBB00718DF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31F13D8C297E0E2700718DF8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,8 @@
 			children = (
 				31F13D78297E0BBA00718DF8 /* AppDelegate.swift */,
 				31F13D7A297E0BBA00718DF8 /* SceneDelegate.swift */,
-				31F13D7C297E0BBA00718DF8 /* ViewController.swift */,
+				31F13D7C297E0BBA00718DF8 /* HomeViewController.swift */,
+				31F13D8C297E0E2700718DF8 /* SettingsViewController.swift */,
 				31F13D7E297E0BBA00718DF8 /* Main.storyboard */,
 				31F13D81297E0BBB00718DF8 /* Assets.xcassets */,
 				31F13D83297E0BBB00718DF8 /* LaunchScreen.storyboard */,
@@ -138,9 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31F13D7D297E0BBA00718DF8 /* ViewController.swift in Sources */,
+				31F13D7D297E0BBA00718DF8 /* HomeViewController.swift in Sources */,
 				31F13D79297E0BBA00718DF8 /* AppDelegate.swift in Sources */,
 				31F13D7B297E0BBA00718DF8 /* SceneDelegate.swift in Sources */,
+				31F13D8D297E0E2700718DF8 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +294,8 @@
 				DEVELOPMENT_TEAM = 2RD9B5QF3Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BikePlay/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location Is Needed";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location Is Needed";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -318,6 +324,8 @@
 				DEVELOPMENT_TEAM = 2RD9B5QF3Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BikePlay/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location Is Needed";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location Is Needed";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
