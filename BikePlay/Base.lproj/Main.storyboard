@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,7 +20,7 @@
                         <tabBarAppearance key="scrollEdgeAppearance"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Ehz-cU-qe3" kind="relationship" relationship="viewControllers" id="taT-vB-rdb"/>
+                        <segue destination="4jW-wh-860" kind="relationship" relationship="viewControllers" id="taT-vB-rdb"/>
                         <segue destination="8YV-AI-aMb" kind="relationship" relationship="viewControllers" id="WXQ-VM-DrW"/>
                     </connections>
                 </tabBarController>
@@ -27,26 +28,87 @@
             </objects>
             <point key="canvasLocation" x="83" y="-296"/>
         </scene>
-        <!--Home-->
+        <!--Home View Controller-->
         <scene sceneID="CSC-Ej-6lc">
             <objects>
                 <viewController id="Ehz-cU-qe3" customClass="HomeViewController" customModule="BikePlay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="94U-Ny-iF2">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L1O-bl-lgA">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Ehz-cU-qe3" id="Up0-Sn-y9V"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="UPh-Uu-e1g"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="L1O-bl-lgA" firstAttribute="top" secondItem="94U-Ny-iF2" secondAttribute="top" id="3pB-Ou-o0E"/>
+                            <constraint firstAttribute="bottom" secondItem="L1O-bl-lgA" secondAttribute="bottom" id="40a-qU-sW3"/>
+                            <constraint firstItem="L1O-bl-lgA" firstAttribute="trailing" secondItem="UPh-Uu-e1g" secondAttribute="trailing" id="KZS-iJ-daZ"/>
+                            <constraint firstItem="L1O-bl-lgA" firstAttribute="leading" secondItem="UPh-Uu-e1g" secondAttribute="leading" id="wvK-kR-RjS"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="03J-yr-z1E"/>
+                    <navigationItem key="navigationItem" id="oUl-4C-xtz"/>
+                    <connections>
+                        <outlet property="mapView" destination="L1O-bl-lgA" id="xHJ-hZ-6BU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dwI-yy-AW6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-353.84615384615381" y="434.36018957345971"/>
+            <point key="canvasLocation" x="575.38461538461536" y="434.36018957345971"/>
+        </scene>
+        <!--Search Table View Controller-->
+        <scene sceneID="smt-6h-TFB">
+            <objects>
+                <tableViewController storyboardIdentifier="SearchTable" id="B1D-Vm-p31" customClass="SearchTableViewController" customModule="BikePlay" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="eDw-To-pPu">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="H4n-Ne-f6Y" detailTextLabel="aF5-Lv-CHH" style="IBUITableViewCellStyleSubtitle" id="rJ2-w7-Nuz">
+                                <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rJ2-w7-Nuz" id="TUC-eb-OLL">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H4n-Ne-f6Y">
+                                            <rect key="frame" x="20" y="6.0000000000000009" width="25" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aF5-Lv-CHH">
+                                            <rect key="frame" x="19.999999999999996" y="22.333333333333336" width="43.666666666666664" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="B1D-Vm-p31" id="wVb-mW-ctU"/>
+                            <outlet property="delegate" destination="B1D-Vm-p31" id="chn-ol-w04"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ESe-uO-92l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-334" y="1115"/>
         </scene>
         <!--Settings-->
         <scene sceneID="zIX-Os-Bcg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Un2-4I-Rgn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="8YV-AI-aMb" customClass="SettingsViewController" customModule="BikePlay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ic6-FD-7sQ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
@@ -56,13 +118,36 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="rGM-vo-g7N"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Un2-4I-Rgn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="486" y="435"/>
+            <point key="canvasLocation" x="1413.8461538461538" y="434.36018957345971"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="Ew4-tT-xb4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4jW-wh-860" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="03J-yr-z1E"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CeG-iY-tdV">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ehz-cU-qe3" kind="relationship" relationship="rootViewController" id="BZW-CD-01X"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FcX-F5-ru9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-353.84615384615381" y="434.36018957345971"/>
         </scene>
     </scenes>
     <resources>
         <image name="gear" catalog="system" width="128" height="122"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemMintColor">
             <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
