@@ -31,8 +31,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
         NotificationCenter.default.addObserver(self, selector: #selector(sendNavigationToRPI(notification:)), name: Notification.Name("directionChange"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(sendWeatherToRPI(notification:)), name: Notification.Name("emperatureChange"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(sendTimeToRPI(notification:)), name: Notification.Name("imeChange"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(sendWeatherToRPI(notification:)), name: Notification.Name("emperatureChange"), object: nil) //FIX THIS
+        NotificationCenter.default.addObserver(self, selector: #selector(sendTimeToRPI(notification:)), name: Notification.Name("imeChange"), object: nil) //FIX THIS
+        NotificationCenter.default.addObserver(self, selector: #selector(tryDisconnectBluetooth(notification:)), name: Notification.Name("Bluetooth Disconnect Request"), object: nil) //FIX THIS
+    }
+    
+    @objc func tryDisconnectBluetooth(notification:Notification) {
+        centralManager?.cancelPeripheralConnection(connectedPeripheral!)
     }
     
     @objc func sendNavigationToRPI(notification:Notification){
@@ -130,6 +135,15 @@ extension SettingsViewController: CBCentralManagerDelegate, CBPeripheralDelegate
         print(error!)
     }
     
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        if let error = error {
+            // Handle error
+            return
+        }
+        // Successfully disconnected
+        NotificationCenter.default.post(name: Notification.Name("BluetoothConfirmedDisconnected"), object: nil)
+    }
+    
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
             
             for service in peripheral.services! {
@@ -208,6 +222,9 @@ extension SettingsViewController: CBCentralManagerDelegate, CBPeripheralDelegate
                         //Set Notify is useful to read incoming data async
                         peripheral.setNotifyValue(true, for: characteristic)
                         print("Found Navigation Characteristic")
+                        
+                        let text = peripheral.name
+                        NotificationCenter.default.post(name: Notification.Name("BluetoothConnected"), object: nil, userInfo: ["instructions": text as Any])
                     }
                     
                     

@@ -22,6 +22,7 @@
                     <connections>
                         <segue destination="4jW-wh-860" kind="relationship" relationship="viewControllers" id="taT-vB-rdb"/>
                         <segue destination="8YV-AI-aMb" kind="relationship" relationship="viewControllers" id="WXQ-VM-DrW"/>
+                        <segue destination="PFM-7N-1jM" kind="relationship" relationship="viewControllers" id="Fj3-s5-ajo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhH-uu-gFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -173,7 +174,7 @@
                             <constraint firstItem="a9d-6i-Ioj" firstAttribute="bottom" secondItem="Utu-yD-MIz" secondAttribute="bottom" constant="42" id="wTR-0e-9IK"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="rGM-vo-g7N"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="antenna.radiowaves.left.and.right" catalog="system" id="rGM-vo-g7N"/>
                     <connections>
                         <outlet property="tableView" destination="Utu-yD-MIz" id="FRC-2J-iLr"/>
                     </connections>
@@ -183,10 +184,51 @@
             <point key="canvasLocation" x="1413.8461538461538" y="434.36018957345971"/>
         </scene>
         <!--Home-->
+        <scene sceneID="N8o-bd-VKb">
+            <objects>
+                <viewController id="PFM-7N-1jM" customClass="StatusViewController" customModule="BikePlay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mxb-mI-53V">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJk-gx-PB9">
+                                <rect key="frame" x="16" y="635.66666666666663" width="358" height="20.333333333333371"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="358" id="g0Y-of-btV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rp9-9f-4tN">
+                                <rect key="frame" x="157.66666666666666" y="686" width="75" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Y1A-2p-YMG"/>
+                        <constraints>
+                            <constraint firstItem="Y1A-2p-YMG" firstAttribute="bottom" secondItem="vJk-gx-PB9" secondAttribute="bottom" constant="105" id="0g3-jO-YNf"/>
+                            <constraint firstItem="Y1A-2p-YMG" firstAttribute="bottom" secondItem="rp9-9f-4tN" secondAttribute="bottom" constant="40" id="5wB-GQ-uAf"/>
+                            <constraint firstItem="rp9-9f-4tN" firstAttribute="centerX" secondItem="Mxb-mI-53V" secondAttribute="centerX" id="Xcd-Lt-8Bi"/>
+                            <constraint firstItem="vJk-gx-PB9" firstAttribute="centerX" secondItem="Mxb-mI-53V" secondAttribute="centerX" id="s3X-MA-1Sf"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="3Wz-dD-SGY"/>
+                    <connections>
+                        <outlet property="DeviceName" destination="vJk-gx-PB9" id="dwY-qQ-FQL"/>
+                        <outlet property="DisconnectButton" destination="rp9-9f-4tN" id="2m4-ai-ov5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hu7-Uc-ScQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1143.0769230769231" y="597.15639810426535"/>
+        </scene>
+        <!--Map-->
         <scene sceneID="Ew4-tT-xb4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4jW-wh-860" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="03J-yr-z1E"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="03J-yr-z1E"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CeG-iY-tdV">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
@@ -203,8 +245,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gear" catalog="system" width="128" height="122"/>
+        <image name="antenna.radiowaves.left.and.right" catalog="system" width="128" height="111"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="map" catalog="system" width="128" height="112"/>
         <image name="xmark.app" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

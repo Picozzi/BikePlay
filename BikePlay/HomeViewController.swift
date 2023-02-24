@@ -9,7 +9,6 @@ import UIKit
 import MapKit
 import CoreLocation
 import AVFoundation
-import WeatherKit
 import Foundation
 
 protocol HandleMapSearch {
@@ -139,9 +138,6 @@ class HomeViewController: UIViewController {
         weather_background_task()
     }
     
-    let weatherService = WeatherService()
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
