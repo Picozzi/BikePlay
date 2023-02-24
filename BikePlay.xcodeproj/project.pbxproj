@@ -11,8 +11,6 @@
 		316BC61A2981EBD1008D24A7 /* MapModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316BC6192981EBD1008D24A7 /* MapModuleViewController.swift */; };
 		319F5C9529837818002DB5E5 /* SheetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F5C9329837818002DB5E5 /* SheetTableViewCell.swift */; };
 		319F5C9629837818002DB5E5 /* SheetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319F5C9429837818002DB5E5 /* SheetTableViewCell.xib */; };
-		31DEB79A2988D7E900896631 /* NavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB7982988D7E900896631 /* NavBarViewController.swift */; };
-		31DEB79B2988D7E900896631 /* NavBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31DEB7992988D7E900896631 /* NavBarViewController.xib */; };
 		31F13D79297E0BBA00718DF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F13D78297E0BBA00718DF8 /* AppDelegate.swift */; };
 		31F13D7B297E0BBA00718DF8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F13D7A297E0BBA00718DF8 /* SceneDelegate.swift */; };
 		31F13D7D297E0BBA00718DF8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F13D7C297E0BBA00718DF8 /* HomeViewController.swift */; };
@@ -27,8 +25,6 @@
 		316BC6192981EBD1008D24A7 /* MapModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModuleViewController.swift; sourceTree = "<group>"; };
 		319F5C9329837818002DB5E5 /* SheetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTableViewCell.swift; sourceTree = "<group>"; };
 		319F5C9429837818002DB5E5 /* SheetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SheetTableViewCell.xib; sourceTree = "<group>"; };
-		31DEB7982988D7E900896631 /* NavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViewController.swift; sourceTree = "<group>"; };
-		31DEB7992988D7E900896631 /* NavBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBarViewController.xib; sourceTree = "<group>"; };
 		31F13D75297E0BBA00718DF8 /* BikePlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BikePlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F13D78297E0BBA00718DF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31F13D7A297E0BBA00718DF8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,8 +66,6 @@
 		31F13D77297E0BBA00718DF8 /* BikePlay */ = {
 			isa = PBXGroup;
 			children = (
-				31DEB7982988D7E900896631 /* NavBarViewController.swift */,
-				31DEB7992988D7E900896631 /* NavBarViewController.xib */,
 				319F5C9329837818002DB5E5 /* SheetTableViewCell.swift */,
 				319F5C9429837818002DB5E5 /* SheetTableViewCell.xib */,
 				316BC6192981EBD1008D24A7 /* MapModuleViewController.swift */,
@@ -148,7 +142,6 @@
 			files = (
 				31F13D85297E0BBB00718DF8 /* LaunchScreen.storyboard in Resources */,
 				31F13D82297E0BBB00718DF8 /* Assets.xcassets in Resources */,
-				31DEB79B2988D7E900896631 /* NavBarViewController.xib in Resources */,
 				31F13D80297E0BBA00718DF8 /* Main.storyboard in Resources */,
 				319F5C9629837818002DB5E5 /* SheetTableViewCell.xib in Resources */,
 			);
@@ -167,7 +160,6 @@
 				31445F01297E3C20001ABAAA /* SearchTableViewController.swift in Sources */,
 				31F13D7B297E0BBA00718DF8 /* SceneDelegate.swift in Sources */,
 				31F13D8D297E0E2700718DF8 /* SettingsViewController.swift in Sources */,
-				31DEB79A2988D7E900896631 /* NavBarViewController.swift in Sources */,
 				316BC61A2981EBD1008D24A7 /* MapModuleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

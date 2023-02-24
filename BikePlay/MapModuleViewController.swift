@@ -85,15 +85,11 @@ class MapModuleViewController: UITableViewController {
 
 extension MapModuleViewController: ClickDelegate {
     func clicked(_ row: Int) {
-//        OLD CODE
-//        dismiss(animated: true, completion: nil)
-//        startSelectedRoute?.startButtonPressed(index: row)
-        
+        print("hiii")
         //MAYBE GET RID OF THIS (THIS IS JUST A DELAY TO SHOW BUTTON ANIMATION LOL)
-         startSelectedRoute?.startButtonPressed(index: row)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { // Change `2.0` to the desired number of seconds.
-             self.dismiss(animated: true, completion: nil)
-         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // Change `2.0` to the desired number of seconds.
+            self.startSelectedRoute?.startButtonPressed(index: row)
+        }
     }
 }
 

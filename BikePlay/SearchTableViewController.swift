@@ -15,7 +15,6 @@ class SearchTableViewController: UITableViewController {
     var handleMapSearchDelegate:HandleMapSearch? = nil
     var matchingItems:[MKMapItem] = []
     var mapView: MKMapView? = nil
-        
 }
 
 extension SearchTableViewController : UISearchResultsUpdating {
