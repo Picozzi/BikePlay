@@ -116,6 +116,7 @@ class StatusViewController: UIViewController {
     }
     
     @objc private func bluetoothConnected(notification: Notification) {
+        print("THIS IS A CONNECTION")
         if let instruction = notification.userInfo?["instructions"] as? String {
             inner.strokeColor = connectedInnerStrokeColor.cgColor
             pulsating.fillColor = connectedPulsatingFillColor.cgColor//this
