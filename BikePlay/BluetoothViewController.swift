@@ -23,6 +23,8 @@ import CoreBluetooth
 
 class BluetoothViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let const_buffer_size : Int = 25
+    
     var centralManager: CBCentralManager?
     var peripherals = [CBPeripheral]()
     var navigationCharacteristic:CBCharacteristic? = nil
@@ -51,35 +53,119 @@ class BluetoothViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.frame = view.bounds
         
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
-        NotificationCenter.default.addObserver(self, selector: #selector(sendNavigationToRPI(notification:)), name: Notification.Name("directionChange"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(sendWeatherToRPI(notification:)), name: Notification.Name("emperatureChange"), object: nil) //FIX THIS
-        NotificationCenter.default.addObserver(self, selector: #selector(sendTimeToRPI(notification:)), name: Notification.Name("imeChange"), object: nil) //FIX THIS
+        NotificationCenter.default.addObserver(self, selector: #selector(sendNavigationToRPI(notification:)), name: Notification.Name("instructionNotif"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(sendDistanceToRPI(notification:)), name: Notification.Name("distanceNotif"), object: nil)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(sendNavigationToRPI(notification:)), name: Notification.Name("directionChange"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(sendWeatherToRPI(notification:)), name: Notification.Name("temperatureChange"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(sendWeatherIconToRPI(notification:)), name: Notification.Name("temperatureIconChange"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(sendTimeToRPI(notification:)), name: Notification.Name("timeChange"), object: nil) //FIX THIS
         NotificationCenter.default.addObserver(self, selector: #selector(tryDisconnectBluetooth(notification:)), name: Notification.Name("Bluetooth Disconnect Request"), object: nil) //FIX THIS
     }
     
     @objc func tryDisconnectBluetooth(notification:Notification) {
         centralManager?.cancelPeripheralConnection(connectedPeripheral!)
     }
+    
+    public func prepForSending(command: String, flag : String) -> String
+    {
+        let flagged_string = flag + command
+        let numChars = flagged_string.count
+        let diff = const_buffer_size - numChars
+        
+        let buff = String(repeating: "*", count: diff)
+        
+        let text = flagged_string + buff
+        return text
+    }
+    
         
     @objc func sendNavigationToRPI(notification:Notification){
         if let instruction = notification.userInfo?["instructions"] as? String {
             
-            print(instruction)
-            var command = instruction
+            let buffered_instruction = prepForSending(command: instruction, flag: "n:")
+            //  print(instruction)
+
+            let dataToSend = Data(buffered_instruction.utf8)
             
-            if instruction.contains("right") {
-                print("RIGHT")
-                command = "right"
-            }
-            else if instruction.contains("left")
-            {
-                print("LEFT")
-                command = "left"
+            if let s = String(bytes: dataToSend, encoding: .utf8) {
+                print(s)
+            } else {
+                print("not a valid UTF-8 sequence")
             }
 
-            let dataToSend = Data(command.utf8)//instruction.data(using: String.Encoding.utf8)
+            if (connectedPeripheral != nil) {
+                connectedPeripheral?.writeValue(dataToSend, for: navigationCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
+            } else {
+                print("haven't discovered device yet")
+            }
             
-            print(dataToSend)
+        }
+    }
+    
+    @objc func sendDistanceToRPI(notification:Notification){
+        if let instruction = notification.userInfo?["instructions"] as? String {
+            
+            let buffered_instruction = prepForSending(command: instruction, flag: "d:")
+            
+            let dataToSend = Data(buffered_instruction.utf8)
+            
+            if let s = String(bytes: dataToSend, encoding: .utf8) {
+                print(s)
+            } else {
+                print("not a valid UTF-8 sequence")
+            }
+            
+            if (connectedPeripheral != nil) {
+                connectedPeripheral?.writeValue(dataToSend, for: navigationCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
+            } else {
+                print("haven't discovered device yet")
+            }
+            
+        }
+    }
+    
+    @objc func sendWeatherIconToRPI(notification: Notification) {
+        if let instruction = notification.userInfo?["instructions"] as? String {
+            
+            let buffered_instruction = prepForSending(command: instruction, flag: "w:")
+            
+            let dataToSend = Data(buffered_instruction.utf8)
+            
+            if let s = String(bytes: dataToSend, encoding: .utf8) {
+                print(s)
+            } else {
+                print("not a valid UTF-8 sequence")
+            }
+            
+            if (connectedPeripheral != nil) {
+                connectedPeripheral?.writeValue(dataToSend, for: navigationCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
+            } else {
+                print("haven't discovered device yet")
+            }
+            
+        }
+    }
+    
+    
+        
+    @objc func sendWeatherToRPI(notification:Notification){
+        if let instruction = notification.userInfo?["instructions"] as? String {
+            
+            let buffered_instruction = prepForSending(command: instruction, flag: "t:")
+            
+            let dataToSend = Data(buffered_instruction.utf8)
+            
+            if let s = String(bytes: dataToSend, encoding: .utf8) {
+                print(s)
+            } else {
+                print("not a valid UTF-8 sequence")
+            }
+            
             if (connectedPeripheral != nil) {
                 connectedPeripheral?.writeValue(dataToSend, for: navigationCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
             } else {
@@ -89,27 +175,21 @@ class BluetoothViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
         
-    @objc func sendWeatherToRPI(notification:Notification){
-        if let instruction = notification.userInfo?["instructions"] as? String {
-            let dataToSend = Data(instruction.utf8)
-            
-            if (connectedPeripheral != nil) {
-                connectedPeripheral?.writeValue(dataToSend, for: weatherCharacteristic!, type: CBCharacteristicWriteType.withResponse)
-            } else {
-                print("haven't discovered device yet")
-            }
-            
-        }
-    }
-        
     @objc func sendTimeToRPI(notification:Notification){
         if let instruction = notification.userInfo?["instructions"] as? String {
-            let dataToSend = Data(instruction.utf8)
             
+            let buffered_instruction = prepForSending(command: instruction, flag: "c:")
             
-            print(dataToSend)
+            let dataToSend = Data(buffered_instruction.utf8)
+            
+            if let s = String(bytes: dataToSend, encoding: .utf8) {
+                print(s)
+            } else {
+                print("not a valid UTF-8 sequence")
+            }
+            
             if (connectedPeripheral != nil) {
-                connectedPeripheral?.writeValue(dataToSend, for: timeCharacteristic!, type: CBCharacteristicWriteType.withResponse)
+                connectedPeripheral?.writeValue(dataToSend, for: navigationCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
             } else {
                 print("haven't discovered device yet")
             }

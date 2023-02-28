@@ -10,6 +10,9 @@
 		31445F01297E3C20001ABAAA /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31445F00297E3C20001ABAAA /* SearchTableViewController.swift */; };
 		316803B629AA6616008A70DA /* AppSettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316803B529AA6616008A70DA /* AppSettingSwitchTableViewCell.swift */; };
 		316803B829AA7063008A70DA /* BluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316803B729AA7063008A70DA /* BluetoothViewController.swift */; };
+		316803BB29AAA5C0008A70DA /* MapboxNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 316803BA29AAA5C0008A70DA /* MapboxNavigation */; };
+		316803BD29AAA735008A70DA /* MapBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316803BC29AAA735008A70DA /* MapBoxViewController.swift */; };
+		316803C029AAAA27008A70DA /* MapboxSearchUI in Frameworks */ = {isa = PBXBuildFile; productRef = 316803BF29AAAA27008A70DA /* MapboxSearchUI */; };
 		316BC61A2981EBD1008D24A7 /* MapModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316BC6192981EBD1008D24A7 /* MapModuleViewController.swift */; };
 		319F5C9529837818002DB5E5 /* SheetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F5C9329837818002DB5E5 /* SheetTableViewCell.swift */; };
 		319F5C9629837818002DB5E5 /* SheetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319F5C9429837818002DB5E5 /* SheetTableViewCell.xib */; };
@@ -29,6 +32,7 @@
 		31445F00297E3C20001ABAAA /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		316803B529AA6616008A70DA /* AppSettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		316803B729AA7063008A70DA /* BluetoothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewController.swift; sourceTree = "<group>"; };
+		316803BC29AAA735008A70DA /* MapBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBoxViewController.swift; sourceTree = "<group>"; };
 		316BC6192981EBD1008D24A7 /* MapModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModuleViewController.swift; sourceTree = "<group>"; };
 		319F5C9329837818002DB5E5 /* SheetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTableViewCell.swift; sourceTree = "<group>"; };
 		319F5C9429837818002DB5E5 /* SheetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SheetTableViewCell.xib; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				316803BB29AAA5C0008A70DA /* MapboxNavigation in Frameworks */,
+				316803C029AAAA27008A70DA /* MapboxSearchUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +96,7 @@
 				31A2D8E629A9863D00EBFD8E /* AppSettingTableViewCell.swift */,
 				316803B529AA6616008A70DA /* AppSettingSwitchTableViewCell.swift */,
 				31F13D7E297E0BBA00718DF8 /* Main.storyboard */,
+				316803BC29AAA735008A70DA /* MapBoxViewController.swift */,
 				31F13D81297E0BBB00718DF8 /* Assets.xcassets */,
 				31F13D83297E0BBB00718DF8 /* LaunchScreen.storyboard */,
 				31F13D86297E0BBB00718DF8 /* Info.plist */,
@@ -113,6 +120,10 @@
 			dependencies = (
 			);
 			name = BikePlay;
+			packageProductDependencies = (
+				316803BA29AAA5C0008A70DA /* MapboxNavigation */,
+				316803BF29AAAA27008A70DA /* MapboxSearchUI */,
+			);
 			productName = BikePlay;
 			productReference = 31F13D75297E0BBA00718DF8 /* BikePlay.app */;
 			productType = "com.apple.product-type.application";
@@ -141,6 +152,10 @@
 				Base,
 			);
 			mainGroup = 31F13D6C297E0BBA00718DF8;
+			packageReferences = (
+				316803B929AAA5C0008A70DA /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */,
+				316803BE29AAAA27008A70DA /* XCRemoteSwiftPackageReference "search-ios" */,
+			);
 			productRefGroup = 31F13D76297E0BBA00718DF8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -170,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31A2D8E329A97F1400EBFD8E /* AppSettingViewController.swift in Sources */,
+				316803BD29AAA735008A70DA /* MapBoxViewController.swift in Sources */,
 				316803B629AA6616008A70DA /* AppSettingSwitchTableViewCell.swift in Sources */,
 				31A2D8DF29A93FAB00EBFD8E /* StatusViewController.swift in Sources */,
 				31F13D7D297E0BBA00718DF8 /* HomeViewController.swift in Sources */,
@@ -330,6 +346,8 @@
 				DEVELOPMENT_TEAM = 2RD9B5QF3Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BikePlay/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "WE NEED THIS";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "WE ALSO NEED THIS";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location Is Needed";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location Is Needed";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -360,6 +378,8 @@
 				DEVELOPMENT_TEAM = 2RD9B5QF3Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BikePlay/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "WE NEED THIS";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "WE ALSO NEED THIS";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location Is Needed";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location Is Needed";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -402,6 +422,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		316803B929AAA5C0008A70DA /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-navigation-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.0;
+			};
+		};
+		316803BE29AAAA27008A70DA /* XCRemoteSwiftPackageReference "search-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/search-ios.git";
+			requirement = {
+				kind = exactVersion;
+				version = "1.0.0-rc.1";
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		316803BA29AAA5C0008A70DA /* MapboxNavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 316803B929AAA5C0008A70DA /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			productName = MapboxNavigation;
+		};
+		316803BF29AAAA27008A70DA /* MapboxSearchUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 316803BE29AAAA27008A70DA /* XCRemoteSwiftPackageReference "search-ios" */;
+			productName = MapboxSearchUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 31F13D6D297E0BBA00718DF8 /* Project object */;
 }

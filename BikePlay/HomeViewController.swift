@@ -205,7 +205,7 @@ class HomeViewController: UIViewController {
         DispatchQueue.global(qos: .background).async { [self] in
             self.send_weather()
             
-            weather_timer = Timer(timeInterval: 300, repeats: true) { _ in
+            weather_timer = Timer(timeInterval: 90, repeats: true) { _ in //300 MAKE IT 300 MAKE IT 300 MAKE IT 300
                 self.send_weather()
             }
             
@@ -237,11 +237,6 @@ class HomeViewController: UIViewController {
     func send_time()
     {
         let date = Date()
-//        let calendar = Calendar.current
-//        let hour = calendar.component(.hour, from: date)
-//        let minute = calendar.component(.minute, from: date)
-//
-//        let time_packet = String(hour) + ":" + String(minute)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let time_packet = dateFormatter.string(from: date).capitalized
@@ -266,12 +261,51 @@ class HomeViewController: UIViewController {
                 if let data = data{
                     do{
                         let tasks = try decoder.decode(WeatherJSON.self, from: data)
-                            print(tasks.weather[0].main)
+                        
+                        var weather_condition = "default"
+                        switch tasks.weather[0].main
+                        {
+                        case "Thunderstorm":
+                            weather_condition = "thunderstorm"
+                        case "Drizzle":
+                            weather_condition = "rain"
+                        case "Rain":
+                            weather_condition = "rain"
+                        case "Snow":
+                            weather_condition = "snow"
+                        case "Clear":
+                            weather_condition = "sun"
+                        case "Clouds":
+                            weather_condition = "cloud"
+                        case "Mist":
+                            weather_condition = "fog"
+                        case "Smoke":
+                            weather_condition = "fog"
+                        case "Haze":
+                            weather_condition = "fog"
+                        case "Dust":
+                            weather_condition = "hazard"
+                        case "Fog":
+                            weather_condition = "fog"
+                        case "Sand":
+                            weather_condition = "hazard"
+                        case "Ash":
+                            weather_condition = "hazard"
+                        case "Squall":
+                            weather_condition = "hazard"
+                        case "Tornado":
+                            weather_condition = "hazard"
+                        default:
+                            weather_condition = "sun"
+                        }
+                            print(weather_condition)
                             print(tasks.main.feels_like)
                             
-                            let text = String(tasks.main.feels_like)
-                            
-                            NotificationCenter.default.post(name: Notification.Name("temperatureChange"), object: nil, userInfo: ["instructions": text])
+                            let icon = weather_condition
+                            let temp = String(Int(round(tasks.main.feels_like)))
+                        
+                            NotificationCenter.default.post(name: Notification.Name("temperatureIconChange"), object: nil, userInfo: ["instructions": icon])
+                            NotificationCenter.default.post(name: Notification.Name("temperatureChange"), object: nil, userInfo: ["instructions": temp])
     
                     }catch{
                         print(error)
