@@ -3,16 +3,15 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="SUv-L4-346">
             <objects>
-                <tabBarController id="nU9-tg-r7d" sceneMemberID="viewController">
+                <tabBarController id="nU9-tg-r7d" customClass="MainTabBarController" customModule="BikePlay" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6f0-4J-OHM">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -20,169 +19,14 @@
                         <tabBarAppearance key="scrollEdgeAppearance"/>
                     </tabBar>
                     <connections>
-                        <segue destination="4jW-wh-860" kind="relationship" relationship="viewControllers" id="taT-vB-rdb"/>
                         <segue destination="PFM-7N-1jM" kind="relationship" relationship="viewControllers" id="Fj3-s5-ajo"/>
-                        <segue destination="11h-5g-kjh" kind="relationship" relationship="viewControllers" id="l8F-ho-0LO"/>
                         <segue destination="BiC-uo-syK" kind="relationship" relationship="viewControllers" id="4Xb-Or-FUe"/>
+                        <segue destination="11h-5g-kjh" kind="relationship" relationship="viewControllers" id="l8F-ho-0LO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhH-uu-gFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="83" y="-296"/>
-        </scene>
-        <!--Home View Controller-->
-        <scene sceneID="CSC-Ej-6lc">
-            <objects>
-                <viewController id="Ehz-cU-qe3" customClass="HomeViewController" customModule="BikePlay" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="94U-Ny-iF2">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L1O-bl-lgA">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                                <standardMapConfiguration key="preferredConfiguration"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Ehz-cU-qe3" id="Up0-Sn-y9V"/>
-                                </connections>
-                            </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="27g-EK-uHE">
-                                <rect key="frame" x="16" y="44" width="358" height="110"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VA6-os-LfG">
-                                        <rect key="frame" x="0.0" y="45" width="358" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="VA6-os-LfG" secondAttribute="trailing" id="EHU-uQ-Pzb"/>
-                                    <constraint firstAttribute="width" constant="358" id="F4r-Fo-m8C"/>
-                                    <constraint firstAttribute="height" constant="110" id="RAt-yp-hkk"/>
-                                    <constraint firstItem="VA6-os-LfG" firstAttribute="leading" secondItem="27g-EK-uHE" secondAttribute="leading" id="nz6-Mj-QHz"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GM9-fp-xGA">
-                                <rect key="frame" x="158" y="708" width="75" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="0IX-io-hWU"/>
-                                    <constraint firstAttribute="height" constant="35" id="QzB-fb-VOq"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="xmark.app" catalog="system"/>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="UPh-Uu-e1g"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                        <constraints>
-                            <constraint firstItem="L1O-bl-lgA" firstAttribute="top" secondItem="94U-Ny-iF2" secondAttribute="top" id="3pB-Ou-o0E"/>
-                            <constraint firstAttribute="bottom" secondItem="L1O-bl-lgA" secondAttribute="bottom" id="40a-qU-sW3"/>
-                            <constraint firstItem="L1O-bl-lgA" firstAttribute="trailing" secondItem="UPh-Uu-e1g" secondAttribute="trailing" id="KZS-iJ-daZ"/>
-                            <constraint firstItem="GM9-fp-xGA" firstAttribute="leading" secondItem="UPh-Uu-e1g" secondAttribute="leading" constant="158" id="UrZ-hz-jr3"/>
-                            <constraint firstItem="UPh-Uu-e1g" firstAttribute="trailing" secondItem="27g-EK-uHE" secondAttribute="trailing" constant="16" id="Xsw-4O-xVa"/>
-                            <constraint firstItem="27g-EK-uHE" firstAttribute="top" secondItem="94U-Ny-iF2" secondAttribute="top" constant="44" id="ZYv-XX-pjy"/>
-                            <constraint firstItem="UPh-Uu-e1g" firstAttribute="trailing" secondItem="GM9-fp-xGA" secondAttribute="trailing" constant="157" id="ZiH-Dq-n4t"/>
-                            <constraint firstItem="UPh-Uu-e1g" firstAttribute="bottom" secondItem="GM9-fp-xGA" secondAttribute="bottom" constant="18" id="pZM-Mj-D5U"/>
-                            <constraint firstItem="L1O-bl-lgA" firstAttribute="leading" secondItem="UPh-Uu-e1g" secondAttribute="leading" id="wvK-kR-RjS"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="oUl-4C-xtz"/>
-                    <connections>
-                        <outlet property="banner" destination="27g-EK-uHE" id="Ts1-2N-zrF"/>
-                        <outlet property="endRoute" destination="GM9-fp-xGA" id="O20-8t-ZQw"/>
-                        <outlet property="instructionLabel" destination="VA6-os-LfG" id="geR-3D-vwf"/>
-                        <outlet property="mapView" destination="L1O-bl-lgA" id="xHJ-hZ-6BU"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dwI-yy-AW6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="575.38461538461536" y="434.36018957345971"/>
-        </scene>
-        <!--Search Table View Controller-->
-        <scene sceneID="smt-6h-TFB">
-            <objects>
-                <tableViewController storyboardIdentifier="SearchTable" id="B1D-Vm-p31" customClass="SearchTableViewController" customModule="BikePlay" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="eDw-To-pPu">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="H4n-Ne-f6Y" detailTextLabel="aF5-Lv-CHH" style="IBUITableViewCellStyleSubtitle" id="rJ2-w7-Nuz">
-                                <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rJ2-w7-Nuz" id="TUC-eb-OLL">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H4n-Ne-f6Y">
-                                            <rect key="frame" x="20" y="6.0000000000000009" width="25" height="14.333333333333334"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aF5-Lv-CHH">
-                                            <rect key="frame" x="19.999999999999996" y="22.333333333333336" width="43.666666666666664" height="14.333333333333334"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="B1D-Vm-p31" id="wVb-mW-ctU"/>
-                            <outlet property="delegate" destination="B1D-Vm-p31" id="chn-ol-w04"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ESe-uO-92l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-334" y="1115"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="zIX-Os-Bcg">
-            <objects>
-                <viewController id="8YV-AI-aMb" customClass="SettingsViewController" customModule="BikePlay" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ic6-FD-7sQ">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Utu-yD-MIz">
-                                <rect key="frame" x="0.0" y="126" width="390" height="642"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="VcN-mt-5ji">
-                                        <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VcN-mt-5ji" id="FPB-y6-i0H">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="a9d-6i-Ioj"/>
-                        <color key="backgroundColor" systemColor="systemMintColor"/>
-                        <constraints>
-                            <constraint firstItem="Utu-yD-MIz" firstAttribute="leading" secondItem="a9d-6i-Ioj" secondAttribute="leading" id="KvG-WN-bEl"/>
-                            <constraint firstItem="Utu-yD-MIz" firstAttribute="top" secondItem="a9d-6i-Ioj" secondAttribute="top" constant="79" id="UfB-V7-KjV"/>
-                            <constraint firstItem="Utu-yD-MIz" firstAttribute="trailing" secondItem="a9d-6i-Ioj" secondAttribute="trailing" id="iQz-Ic-EzY"/>
-                            <constraint firstItem="a9d-6i-Ioj" firstAttribute="bottom" secondItem="Utu-yD-MIz" secondAttribute="bottom" constant="42" id="wTR-0e-9IK"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="antenna.radiowaves.left.and.right" catalog="system" id="rGM-vo-g7N"/>
-                    <connections>
-                        <outlet property="tableView" destination="Utu-yD-MIz" id="FRC-2J-iLr"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Un2-4I-Rgn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1413.8461538461538" y="434.36018957345971"/>
         </scene>
         <!--App Setting View Controller-->
         <scene sceneID="OaV-Mx-PGr">
@@ -198,9 +42,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nG-My-cFY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3289.2307692307691" y="328.43601895734594"/>
+            <point key="canvasLocation" x="951" y="1138"/>
         </scene>
-        <!--Item-->
+        <!--Map-->
         <scene sceneID="E5q-pK-5k4">
             <objects>
                 <viewController id="BiC-uo-syK" customClass="MapBoxViewController" customModule="BikePlay" customModuleProvider="target" sceneMemberID="viewController">
@@ -210,16 +54,16 @@
                         <viewLayoutGuide key="safeArea" id="elM-pI-mmS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="tCC-3f-nrH"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="tCC-3f-nrH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CGL-6q-coL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2130" y="401"/>
+            <point key="canvasLocation" x="82" y="444"/>
         </scene>
         <!--Home-->
         <scene sceneID="N8o-bd-VKb">
             <objects>
-                <viewController id="PFM-7N-1jM" customClass="StatusViewController" customModule="BikePlay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PFM-7N-1jM" customClass="HomeViewController" customModule="BikePlay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mxb-mI-53V">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,54 +77,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rp9-9f-4tN">
-                                <rect key="frame" x="157.66666666666666" y="686" width="75" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Y1A-2p-YMG"/>
                         <constraints>
                             <constraint firstItem="Y1A-2p-YMG" firstAttribute="bottom" secondItem="vJk-gx-PB9" secondAttribute="bottom" constant="105" id="0g3-jO-YNf"/>
-                            <constraint firstItem="Y1A-2p-YMG" firstAttribute="bottom" secondItem="rp9-9f-4tN" secondAttribute="bottom" constant="40" id="5wB-GQ-uAf"/>
-                            <constraint firstItem="rp9-9f-4tN" firstAttribute="centerX" secondItem="Mxb-mI-53V" secondAttribute="centerX" id="Xcd-Lt-8Bi"/>
                             <constraint firstItem="vJk-gx-PB9" firstAttribute="centerX" secondItem="Mxb-mI-53V" secondAttribute="centerX" id="s3X-MA-1Sf"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="3Wz-dD-SGY"/>
                     <connections>
-                        <outlet property="DeviceName" destination="vJk-gx-PB9" id="dwY-qQ-FQL"/>
-                        <outlet property="DisconnectButton" destination="rp9-9f-4tN" id="2m4-ai-ov5"/>
+                        <outlet property="deviceNameField" destination="vJk-gx-PB9" id="lFS-0h-L4A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hu7-Uc-ScQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1143.0769230769231" y="597.15639810426535"/>
+            <point key="canvasLocation" x="-780" y="444"/>
         </scene>
-        <!--Map-->
-        <scene sceneID="Ew4-tT-xb4">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4jW-wh-860" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="03J-yr-z1E"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CeG-iY-tdV">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Ehz-cU-qe3" kind="relationship" relationship="rootViewController" id="BZW-CD-01X"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FcX-F5-ru9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-353.84615384615381" y="434.36018957345971"/>
-        </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="mpP-WQ-xoo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="11h-5g-kjh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="jZg-ON-ik7"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="jZg-ON-ik7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="X2D-n4-yTw">
                         <rect key="frame" x="0.0" y="47" width="390" height="96"/>
@@ -293,25 +110,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPu-l6-m5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2360" y="328.43601895734594"/>
+            <point key="canvasLocation" x="952" y="444"/>
         </scene>
     </scenes>
     <resources>
-        <image name="antenna.radiowaves.left.and.right" catalog="system" width="128" height="111"/>
+        <image name="gear" catalog="system" width="128" height="122"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="map" catalog="system" width="128" height="112"/>
-        <image name="xmark.app" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

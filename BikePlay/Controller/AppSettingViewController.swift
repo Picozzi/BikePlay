@@ -3,7 +3,6 @@
 //  BikePlay
 //
 //  Created by Matthew Picozzi on 2023-02-24.
-//
 
 import UIKit
 
@@ -34,6 +33,8 @@ struct SettingsOption {
 
 class AppSettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let bluetoothViewController = BluetoothViewController()
+
     private let tableView : UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(AppSettingTableViewCell.self, forCellReuseIdentifier: AppSettingTableViewCell.identifier)
@@ -55,35 +56,17 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func configure() {
         
-        models.append(Sections(title: "General",
+        models.append(Sections(title: "Bluetooth",
                                options: [
-                                .staticCell(model: SettingsOption(title: "YSL", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemMint) {
+                                .staticCell(model: SettingsOption(title: "Helmet", icon: UIImage(named: "bike"), iconBackgroundColor: .systemGreen) {
                                     
-                                    let bvc = BluetoothViewController()
-                                    self.navigationController?.pushViewController(bvc, animated: true)
+                                    self.navigationController?.pushViewController(self.bluetoothViewController, animated: true)
                                     
-                                    
-                                    
-                                }),
-                                .staticCell(model: SettingsOption(title: "Bluetooth", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemMint) {
-                                    print("TAPPED BLE")
                                 })]
                               ))
-        
-        models.append(Sections(title: "Second General",
+        models.append(Sections(title: "Other",
                                options: [
-                                .staticCell(model: SettingsOption(title: "VV", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemMint) {
-                                    
-                                    print("TAPPED VV")
-                                }),
-                                .staticCell(model: SettingsOption(title: "XYZ", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemMint) {
-                                    
-                                    print("TAPPED XYZ")
-                                })]
-                              ))
-        models.append(Sections(title: "Second General",
-                               options: [
-                                .switchCell(model: SettingsSwitchOption(title: "HEHE", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemRed, handler: {print("HI")}, isOn: false))]
+                                .switchCell(model: SettingsSwitchOption(title: "Screen Sleep", icon: UIImage(systemName: "iphone"), iconBackgroundColor: .systemOrange, handler: {}, isOn: false))]
                             
                               ))
 

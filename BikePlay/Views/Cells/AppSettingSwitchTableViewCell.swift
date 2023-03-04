@@ -35,7 +35,7 @@ class AppSettingSwitchTableViewCell: UITableViewCell {
     
     private let toggle : UISwitch = {
         let toggle = UISwitch()
-        
+        toggle.addTarget(self, action: #selector(toggledAction), for: .valueChanged)
         return toggle
     }()
     
@@ -89,4 +89,15 @@ class AppSettingSwitchTableViewCell: UITableViewCell {
         iconContainer.backgroundColor = model.iconBackgroundColor
         toggle.isOn = model.isOn
     }
+    
+    @objc func toggledAction(sender: UISwitch){
+            if sender.isOn == true {
+                UIApplication.shared.isIdleTimerDisabled = true
+                UIScreen.main.brightness = CGFloat(0.2)
+            }
+            else{
+                UIApplication.shared.isIdleTimerDisabled = false
+                UIScreen.main.brightness = CGFloat(1.0)
+            }
+        }
 }
