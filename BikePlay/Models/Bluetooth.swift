@@ -9,8 +9,8 @@ import Foundation
 import CoreBluetooth
 
 public class BluetoothModel {
-    let BLEService = "EC00" //"FFE0"
-    let BLECharacteristic = "EC01" //"FFE1"
+    let BLEService = "FFE0"
+    let BLECharacteristic = "FFE1"
     let test : String = "THIS IS A TEST STRING"
     let constBufferSize : Int = 25
     
@@ -45,7 +45,7 @@ public class BluetoothModel {
             }
 
             if (connectedPeripheral != nil) {
-                connectedPeripheral?.writeValue(dataToSend, for: characteristic!, type: CBCharacteristicWriteType.withResponse) //withoutResponseOnPico
+                connectedPeripheral?.writeValue(dataToSend, for: characteristic!, type: CBCharacteristicWriteType.withoutResponse) //withoutResponseOnPico
             } else {
                 print("haven't discovered device yet")
             }

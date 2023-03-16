@@ -55,7 +55,7 @@ class MainTabBarController: UITabBarController {
             
            self.sendWeather()
             
-            weatherTimer = Timer(timeInterval: 300, repeats: true) { _ in //300 MAKE IT 300 MAKE IT 300 MAKE IT 300
+            weatherTimer = Timer(timeInterval: 300, repeats: true) { _ in 
                 self.sendWeather()
             }
             

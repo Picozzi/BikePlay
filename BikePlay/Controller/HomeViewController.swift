@@ -78,7 +78,7 @@ class HomeViewController: UIViewController {
         view.addSubview(wheelImage)
 
         //logo formatting
-        logoImage.image =  UIImage(named: "Untitled")
+        logoImage.image =  UIImage(named: "logo_white-1")
         logoImage.clipsToBounds = true
         logoImage.center = CGPoint(x: view.center.x, y: view.center.y - 250)
         view.addSubview(logoImage)

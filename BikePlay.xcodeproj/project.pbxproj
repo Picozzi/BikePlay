@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		31122A6329AEEFBF00144199 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31122A6229AEEFBF00144199 /* Bluetooth.swift */; };
 		31122A6529AEEFCF00144199 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31122A6429AEEFCF00144199 /* Weather.swift */; };
-		31122A6729AEEFD700144199 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31122A6629AEEFD700144199 /* Time.swift */; };
-		3121991729B065CC00DC28E7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121991629B065CC00DC28E7 /* Settings.swift */; };
+		3132FA9329B40F1600718DCA /* RouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3132FA9229B40F1600718DCA /* RouteTableViewController.swift */; };
+		3132FA9629B4185900718DCA /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3132FA9429B4185900718DCA /* RouteTableViewCell.swift */; };
+		3132FA9729B4185900718DCA /* RouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3132FA9529B4185900718DCA /* RouteTableViewCell.xib */; };
+		3132FA9929B44BCA00718DCA /* TopBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3132FA9829B44BCA00718DCA /* TopBannerViewController.swift */; };
 		31445F01297E3C20001ABAAA /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31445F00297E3C20001ABAAA /* SearchTableViewController.swift */; };
 		3161BA7A29AE951F00DAB8F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161BA7929AE951F00DAB8F6 /* HomeViewController.swift */; };
 		316803B629AA6616008A70DA /* AppSettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316803B529AA6616008A70DA /* AppSettingSwitchTableViewCell.swift */; };
@@ -37,8 +39,10 @@
 /* Begin PBXFileReference section */
 		31122A6229AEEFBF00144199 /* Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
 		31122A6429AEEFCF00144199 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		31122A6629AEEFD700144199 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
-		3121991629B065CC00DC28E7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		3132FA9229B40F1600718DCA /* RouteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewController.swift; sourceTree = "<group>"; };
+		3132FA9429B4185900718DCA /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
+		3132FA9529B4185900718DCA /* RouteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTableViewCell.xib; sourceTree = "<group>"; };
+		3132FA9829B44BCA00718DCA /* TopBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerViewController.swift; sourceTree = "<group>"; };
 		31445F00297E3C20001ABAAA /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		3161BA7929AE951F00DAB8F6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		316803B529AA6616008A70DA /* AppSettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -80,9 +84,7 @@
 			children = (
 				31122A6229AEEFBF00144199 /* Bluetooth.swift */,
 				31122A6429AEEFCF00144199 /* Weather.swift */,
-				31122A6629AEEFD700144199 /* Time.swift */,
 				31CEE4E829AF0CA400E10583 /* Location.swift */,
-				3121991629B065CC00DC28E7 /* Settings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -95,6 +97,8 @@
 				316803BC29AAA735008A70DA /* MapBoxViewController.swift */,
 				31A2D8E229A97F1400EBFD8E /* AppSettingViewController.swift */,
 				316803B729AA7063008A70DA /* BluetoothViewController.swift */,
+				3132FA9229B40F1600718DCA /* RouteTableViewController.swift */,
+				3132FA9829B44BCA00718DCA /* TopBannerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -125,6 +129,8 @@
 			children = (
 				31A2D8E629A9863D00EBFD8E /* AppSettingTableViewCell.swift */,
 				316803B529AA6616008A70DA /* AppSettingSwitchTableViewCell.swift */,
+				3132FA9429B4185900718DCA /* RouteTableViewCell.swift */,
+				3132FA9529B4185900718DCA /* RouteTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -231,6 +237,7 @@
 				31F13D85297E0BBB00718DF8 /* LaunchScreen.storyboard in Resources */,
 				31F13D82297E0BBB00718DF8 /* Assets.xcassets in Resources */,
 				31F13D80297E0BBA00718DF8 /* Main.storyboard in Resources */,
+				3132FA9729B4185900718DCA /* RouteTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,19 +254,20 @@
 				316803B629AA6616008A70DA /* AppSettingSwitchTableViewCell.swift in Sources */,
 				31A2D8DF29A93FAB00EBFD8E /* defunctStatusViewController.swift in Sources */,
 				31F13D7D297E0BBA00718DF8 /* HomesViewController.swift in Sources */,
-				31122A6729AEEFD700144199 /* Time.swift in Sources */,
 				3161BA7A29AE951F00DAB8F6 /* HomeViewController.swift in Sources */,
 				31122A6329AEEFBF00144199 /* Bluetooth.swift in Sources */,
 				319F5C9529837818002DB5E5 /* SheetTableViewCell.swift in Sources */,
+				3132FA9329B40F1600718DCA /* RouteTableViewController.swift in Sources */,
+				3132FA9629B4185900718DCA /* RouteTableViewCell.swift in Sources */,
 				31A2D8E729A9863D00EBFD8E /* AppSettingTableViewCell.swift in Sources */,
 				31F13D79297E0BBA00718DF8 /* AppDelegate.swift in Sources */,
 				31994DD529AEB4D700AF0C51 /* MainTabBarController.swift in Sources */,
 				31445F01297E3C20001ABAAA /* SearchTableViewController.swift in Sources */,
-				3121991729B065CC00DC28E7 /* Settings.swift in Sources */,
 				31CEE4E929AF0CA400E10583 /* Location.swift in Sources */,
 				31F13D7B297E0BBA00718DF8 /* SceneDelegate.swift in Sources */,
 				316803B829AA7063008A70DA /* BluetoothViewController.swift in Sources */,
 				31F13D8D297E0E2700718DF8 /* SettingsViewController.swift in Sources */,
+				3132FA9929B44BCA00718DCA /* TopBannerViewController.swift in Sources */,
 				316BC61A2981EBD1008D24A7 /* MapModuleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

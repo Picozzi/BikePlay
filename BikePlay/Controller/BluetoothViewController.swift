@@ -115,6 +115,7 @@ extension BluetoothViewController: CBCentralManagerDelegate, CBPeripheralDelegat
                         
                         //peripheral.setNotifyValue(true, for: characteristic) i dont think we need this
                         print("Found Characteristic")
+                        sleep(2)
                         tabBar!.sendWeather()
                         tabBar!.sendTime()
 

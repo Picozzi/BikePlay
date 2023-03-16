@@ -39,7 +39,7 @@ public func retrieveWeatherIcon(json : WeatherJSON) -> String {
     case "Snow":
         return "snow"
     case "Clear":
-        return "sun"
+        return "sunny"
     case "Clouds":
         return "cloud"
     case "Mist":
@@ -61,7 +61,7 @@ public func retrieveWeatherIcon(json : WeatherJSON) -> String {
     case "Tornado":
         return "hazard"
     default:
-        return "sun"
+        return "sunny"
     }
 }
 

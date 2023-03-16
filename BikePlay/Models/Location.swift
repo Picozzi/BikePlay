@@ -11,5 +11,4 @@ import CoreLocation
 public class LocationModel {
     
     var location : CLLocation?
-    
 }
