@@ -8,11 +8,13 @@
 import UIKit
 import CoreLocation
 
+
 class MainTabBarController: UITabBarController {
     
     //Data Models To Pass Down
     var bluetoothModel = BluetoothModel()
     var locationModel = LocationModel()
+    var offlineStorage = OfflineStorage()
     
     //Timers
     var weatherTimer: Timer = Timer()

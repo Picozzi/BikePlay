@@ -34,7 +34,9 @@ struct SettingsOption {
 class AppSettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let bluetoothViewController = BluetoothViewController()
-
+    let offlineTableViewController = OfflineTableViewController()
+ //   let tileViewController = TileViewController()
+    
     private let tableView : UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(AppSettingTableViewCell.self, forCellReuseIdentifier: AppSettingTableViewCell.identifier)
@@ -64,10 +66,23 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
                                     
                                 })]
                               ))
+        
+        models.append(Sections(title: "Offline Mode",
+                               options: [
+                                .staticCell(model: SettingsOption(title: "Download Maps", icon: UIImage(systemName: "mappin.and.ellipse"), iconBackgroundColor: .systemBlue) {
+                                    
+                                    self.navigationController?.pushViewController(self.offlineTableViewController, animated: true)
+                                    
+                                }), .staticCell(model: SettingsOption(title: "Downloaded Tiles", icon: UIImage(systemName: "icloud.and.arrow.down"), iconBackgroundColor: .systemCyan) {
+                                    
+                                    self.navigationController?.pushViewController(TileViewController(), animated: true)
+                                    
+                                })]
+                              ))
+  
         models.append(Sections(title: "Other",
                                options: [
                                 .switchCell(model: SettingsSwitchOption(title: "Screen Sleep", icon: UIImage(systemName: "iphone"), iconBackgroundColor: .systemOrange, handler: {}, isOn: false))]
-                            
                               ))
 
         
