@@ -4,6 +4,8 @@
 //
 //  Created by Matthew Picozzi on 2023-02-24.
 //
+//  Cell Layout From https://www.youtube.com/watch?v=2FigkAlz1Bg
+//
 
 import UIKit
 

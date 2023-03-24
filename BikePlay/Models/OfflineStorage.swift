@@ -8,6 +8,12 @@
 import Foundation
 import MapboxMaps
 import MapboxCoreNavigation
+import MapboxNavigation
+
+struct Region {
+     var bbox: [CLLocationCoordinate2D]
+     var identifier: String
+ }
 
 public class OfflineStorage {
     
@@ -18,5 +24,10 @@ public class OfflineStorage {
     var tileStore: TileStore {
     tileStoreLocation.tileStore
     }
+        
+    var internetConnection : Bool?
     
+    var navigationMapView = NavigationMapView()
+
+
 }

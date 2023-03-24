@@ -7,11 +7,11 @@
 
 import UIKit
 import CoreLocation
-
+import Network
 
 class MainTabBarController: UITabBarController {
     
-    //Data Models To Pass Down
+    //Defining Shared Models To Pass Down
     var bluetoothModel = BluetoothModel()
     var locationModel = LocationModel()
     var offlineStorage = OfflineStorage()
@@ -20,8 +20,13 @@ class MainTabBarController: UITabBarController {
     var weatherTimer: Timer = Timer()
     var timeTimer: Timer = Timer()
 
+    //Notification Center
     let notificationCenter = NotificationCenter.default
     
+    //Wifi Monitoring
+    let monitor = NWPathMonitor()
+
+    //Define Location Managers
     lazy var locationManager: CLLocationManager = {
         var locman = CLLocationManager()
         locman.desiredAccuracy = kCLLocationAccuracyBest
@@ -31,6 +36,20 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Update Internet Connection Variable
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                print("Message: Internet Connection Found")
+                self.offlineStorage.internetConnection = true
+            } else {
+                print("Message: No Internet Connection Found")
+                self.offlineStorage.internetConnection = false
+            }
+        }
+
+        let queue = DispatchQueue.main
+        monitor.start(queue: queue)
+                
         notificationCenter.addObserver(self, selector: #selector(willResignActive), name: UIApplication.didEnterBackgroundNotification, object: nil)
                 
         notificationCenter.addObserver(self, selector: #selector(appCameToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)

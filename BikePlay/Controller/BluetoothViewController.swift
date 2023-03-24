@@ -14,7 +14,6 @@ class BluetoothViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var tabBar : MainTabBarController?
     
-    
     private let tableView : UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -84,12 +83,6 @@ extension BluetoothViewController: CBCentralManagerDelegate, CBPeripheralDelegat
                 
                 print("Service found with UUID: " + service.uuid.uuidString)
                 
-//                //device information service
-//                if (service.uuid.uuidString == "180A") {
-//                    peripheral.discoverCharacteristics(nil, for: service)
-//                }
-                
-                //my service
                 if (service.uuid.uuidString == bluetoothModel.BLEService.uppercased()) {
                     peripheral.discoverCharacteristics(nil, for: service)
                 }

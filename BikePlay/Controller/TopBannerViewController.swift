@@ -102,7 +102,7 @@ class TopBanner: ContainerViewController {
             
             let distance = distArr2.joined()
 
-            if(distance != "1000m")
+            if(distance != "1,000m")
             {
                 self.bluetoothModel.sendToRPI(flag: "d:", data: distance)
                 previouslySentDistance = dist

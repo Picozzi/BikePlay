@@ -4,31 +4,32 @@
 //
 //  Created by Matthew Picozzi on 2023-02-28.
 //
-
-//SEE IF I WANT TO EVEN KEEP THE DISCONNECT BLUETOOTH BUTTON
+// Pulsating Animation From: https://www.letsbuildthatapp.com/videos/2362
+//
 
 import UIKit
 
 class HomeViewController: UIViewController {
     
+    //Defining Shared Models
     var bluetoothModel = BluetoothModel()
                 
     //Outlets
     @IBOutlet weak var deviceNameField: UILabel!
     
-    //Variables
+    //UI Variables
     var pulseLayer : CAShapeLayer!
     var innerRingLayer: CAShapeLayer!
     
-    //Constants
+    //UI Constants
     let wheelImage = UIImageView(frame: CGRectMake(0, 0, 270, 270))
     let logoImage = UIImageView(frame: CGRectMake(0, 0, 325, 46))
-    
+    let circularPath = UIBezierPath(arcCenter: .zero, radius: 140, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+
+    //Notification Center
     let notificationCenter = NotificationCenter.default
     
-    let circularPath = UIBezierPath(arcCenter: .zero, radius: 140, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
-    
-    //Colours -- MOVE THIS LATER
+    //UI Home Screen Colours
     let backgroundColor = UIColor(red: 21/255, green: 22/255, blue: 33/255, alpha: 1)
     let notConnectedInnerStrokeColor = UIColor(red: 234/255, green: 46/255, blue: 111/255, alpha: 1)
     let notConnectedPulsatingFillColor = UIColor(red: 86/255, green: 30/255, blue: 63/255, alpha: 1)
@@ -43,12 +44,12 @@ class HomeViewController: UIViewController {
         let ancestralTabBarController = self.tabBarController  as! MainTabBarController
         bluetoothModel = ancestralTabBarController.bluetoothModel
             
-        //device name text field formatting
+        //Device Name Text Field Formatting
         deviceNameField.textColor = .white
         deviceNameField.text = "Not Connected!"
         deviceNameField.font = UIFont.systemFont(ofSize: 25)
         
-        //pulsating layer formatting
+        //Pulsation Animation Formatting
         pulseLayer = CAShapeLayer()
         pulseLayer.path = circularPath.cgPath
         pulseLayer.strokeColor = UIColor.clear.cgColor
@@ -58,7 +59,7 @@ class HomeViewController: UIViewController {
         view.layer.addSublayer(pulseLayer)
         startPulseAnimation()
         
-        //inner ring layer formatting
+        //Inner Ring Layer Formatting
         innerRingLayer = CAShapeLayer()
         innerRingLayer.path = circularPath.cgPath
         innerRingLayer.lineCap = CAShapeLayerLineCap.round
@@ -69,7 +70,7 @@ class HomeViewController: UIViewController {
         innerRingLayer.fillColor = backgroundColor.cgColor //this
         view.layer.addSublayer(innerRingLayer)
 
-        //wheel logo formatting
+        //Wheel Logo Formatting
         wheelImage.image =  UIImage(named: "logo_inv")
         wheelImage.layer.cornerRadius = wheelImage.frame.size.height/2
         wheelImage.layer.borderColor = UIColor.clear.cgColor
@@ -77,26 +78,30 @@ class HomeViewController: UIViewController {
         wheelImage.center = view.convert(view.center, from: view)
         view.addSubview(wheelImage)
 
-        //logo formatting
+        //Logo Formatting
         logoImage.image =  UIImage(named: "logo_white-1")
         logoImage.clipsToBounds = true
         logoImage.center = CGPoint(x: view.center.x, y: view.center.y - 250)
         view.addSubview(logoImage)
     }
     
+    //Update Logo On Tab Switch
     override func viewWillAppear(_ animated: Bool) {
         changeStatusUI()
     }
     
+    //Continue Pulse Animation On Tab Switch
     override func viewDidAppear(_ animated: Bool) {
       super.viewDidAppear(animated)
         startPulseAnimation()
     }
     
+    //Continue Pulse Anmation On App Sleep and Reopen
     @objc private func foregroundHandler() {
         startPulseAnimation()
     }
     
+    //Trigger UI Changes On BLE Connect
     @objc private func changeStatusUI(){
         if (bluetoothModel.connectedPeripheral == nil || bluetoothModel.connectedPeripheral?.state == .disconnected)
         {
@@ -112,6 +117,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+    //Start Pulse Animation
     private func startPulseAnimation() {
         let animation = CABasicAnimation(keyPath: "transform.scale")
         animation.toValue = 1.25

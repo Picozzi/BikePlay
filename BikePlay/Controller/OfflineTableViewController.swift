@@ -11,11 +11,7 @@ import MapboxMaps
 import MapboxCoreNavigation
 import MapboxNavigation
 import MapboxDirections
-
-struct Region {
-     var bbox: [CLLocationCoordinate2D]
-     var identifier: String
- }
+import MapboxNavigationNative
 
 class OfflineTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -78,21 +74,25 @@ class OfflineTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func downloadTile(name:String, coordinates: CLLocationCoordinate2D)
     {
-        let tempRegion = MKCoordinateRegion(center: coordinates, latitudinalMeters: 2000, longitudinalMeters: 2000);
+        let tempRegion = MKCoordinateRegion(center: coordinates, latitudinalMeters: 1e4, longitudinalMeters: 1e4);
         var northWest = CLLocationCoordinate2D()
         var southEast = CLLocationCoordinate2D()
+        var northEast = CLLocationCoordinate2D()
+        var southWest = CLLocationCoordinate2D()
         
         southEast.latitude = tempRegion.center.latitude - 0.5 * tempRegion.span.latitudeDelta;
+        southEast.longitude = tempRegion.center.longitude + 0.5 * tempRegion.span.longitudeDelta;
+        
+        southWest.latitude = tempRegion.center.latitude - 0.5 * tempRegion.span.latitudeDelta;
+        southWest.longitude = tempRegion.center.longitude - 0.5 * tempRegion.span.longitudeDelta;
+        
         northWest.latitude = tempRegion.center.latitude + 0.5 * tempRegion.span.latitudeDelta;
-        southEast.longitude = tempRegion.center.longitude - 0.5 * tempRegion.span.longitudeDelta;
-        northWest.longitude = tempRegion.center.longitude + 0.5 * tempRegion.span.longitudeDelta;
+        northWest.longitude = tempRegion.center.longitude - 0.5 * tempRegion.span.longitudeDelta;
         
-        print(southEast.latitude)
-        print(southEast.longitude)
-        print(northWest.latitude)
-        print(northWest.longitude)
+        northEast.latitude = tempRegion.center.latitude + 0.5 * tempRegion.span.latitudeDelta;
+        northEast.longitude = tempRegion.center.longitude + 0.5 * tempRegion.span.longitudeDelta;
         
-        let region = Region(bbox: [northWest, southEast], identifier: name)
+        let region = Region(bbox: [northWest, northEast, southEast, southWest], identifier: name)
         
         guard let styleOptions = StylePackLoadOptions(glyphsRasterizationMode: .ideographsRasterizedLocally, metadata: nil) else { return }
         
@@ -101,22 +101,24 @@ class OfflineTableViewController: UIViewController, UITableViewDelegate, UITable
             switch result {
             case .success(let stylePack):
                 print("Style pack \(stylePack.styleURI) downloaded!")
-                let options = TilesetDescriptorOptions(styleURI: .streets, zoomRange: 0...16)
-                let tilesetDescriptor = self.offlineStorage.offlineManager.createTilesetDescriptor(for: options)
-                let tileRegionLoadOptions = TileRegionLoadOptions( geometry: Polygon([region.bbox]).geometry, descriptors: [tilesetDescriptor], acceptExpired: true)!
                 
-                let tileRegionId = region.identifier
                 
-                let tileRegionCancelable = self.offlineStorage.tileStore.loadTileRegion(forId: tileRegionId, loadOptions: tileRegionLoadOptions) { _ in } completion: { result in
-                    switch result {
-                    case let .success(tileRegion):
-                        print("Downloaded \(tileRegion)")
-                        
-                    case let .failure(error):
-                        if case TileRegionError.canceled = error {
-                            print("Cancelled Download")
-                        } else {
-                            print(error)
+                self.tileRegionLoadOptions(for: region) { [weak self] loadOptions in
+                    
+                    guard let self = self, let loadOptions = loadOptions else { return }
+                    
+                    let tileRegionId = region.identifier
+                    
+                    let tileRegionCancelable = self.offlineStorage.tileStore.loadTileRegion(forId: tileRegionId, loadOptions: loadOptions) { _ in } completion: { result in
+                        switch result {
+                        case let .success(tileRegion):
+                            print("Downloaded \(tileRegion)")
+                        case let .failure(error):
+                            if case TileRegionError.canceled = error {
+                                print("Cancelled Download")
+                            } else {
+                                print(error)
+                            }
                         }
                     }
                 }
@@ -124,6 +126,21 @@ class OfflineTableViewController: UIViewController, UITableViewDelegate, UITable
                 print("Error while downloading style pack: \(error).")
             }
         })
+    }
+    
+    func tileRegionLoadOptions(for region: Region, completion: @escaping (TileRegionLoadOptions?) -> Void) {
+        let tilesetDescriptorOptions = TilesetDescriptorOptions(styleURI: .streets, zoomRange: 0...16)
+        let mapsDescriptor = offlineStorage.offlineManager.createTilesetDescriptor(for: tilesetDescriptorOptions)
+        TilesetDescriptorFactory.getLatest { navigationDescriptor in
+            completion(
+                TileRegionLoadOptions(
+                    geometry: Polygon([region.bbox]).geometry,
+                    descriptors: [ mapsDescriptor, navigationDescriptor ],
+                    metadata: nil,
+                    acceptExpired: true,
+                    networkRestriction: .none)
+            )
+        }
     }
 }
 

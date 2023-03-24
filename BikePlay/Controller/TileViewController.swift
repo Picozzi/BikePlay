@@ -19,7 +19,6 @@ class TileViewController: UIViewController, UITableViewDelegate, UITableViewData
         return table
     }()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -32,7 +31,6 @@ class TileViewController: UIViewController, UITableViewDelegate, UITableViewData
         let ancestralTabBarController = self.tabBarController  as! MainTabBarController
         offlineStorage = ancestralTabBarController.offlineStorage
 
-
         offlineStorage.tileStore.allTileRegions { result in
             switch result {
             case let .success(tileRegions):
@@ -40,15 +38,12 @@ class TileViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.tiles = tileRegions
 
             case let .failure(error) where error is TileRegionError:
-               // handleTileRegionError(error)
                 print("error")
 
             case .failure(_):
-             //   handleFailure()
                 print("failure")
             }
         }
-       
     }
     
     func pull()
@@ -70,11 +65,8 @@ class TileViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tiles.count
-
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,6 +87,7 @@ class TileViewController: UIViewController, UITableViewDelegate, UITableViewData
             let selectedItem = self.tiles[indexPath.row]
             tiles.remove(at: indexPath.row)
             offlineStorage.tileStore.removeTileRegion(forId: selectedItem.id)
+            try? offlineStorage.navigationMapView.mapView.mapboxMap.style.removeLayer(withId: selectedItem.id)
             tableView.reloadData()
         }
     }
