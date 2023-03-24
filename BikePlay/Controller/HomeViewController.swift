@@ -18,24 +18,34 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var deviceNameField: UILabel!
     
     //UI Variables
-    var pulseLayer : CAShapeLayer!
-    var innerRingLayer: CAShapeLayer!
+    var pulseLayer : CAShapeLayer = {
+        let pulseLayer = CAShapeLayer()
+        return pulseLayer
+    }()
+    
+    var innerRingLayer : CAShapeLayer = {
+        let innerRingLayer = CAShapeLayer()
+        return innerRingLayer
+    }()
     
     //UI Constants
     let wheelImage = UIImageView(frame: CGRectMake(0, 0, 270, 270))
     let logoImage = UIImageView(frame: CGRectMake(0, 0, 325, 46))
     let circularPath = UIBezierPath(arcCenter: .zero, radius: 140, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
 
+    let animation : CABasicAnimation = {
+        let animation = CABasicAnimation(keyPath: "transform.scale")
+        animation.toValue = 1.25
+        animation.duration = 1
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        animation.autoreverses = true
+        animation.repeatCount = .greatestFiniteMagnitude
+        return animation
+    }()
+    
     //Notification Center
     let notificationCenter = NotificationCenter.default
     
-    //UI Home Screen Colours
-    let backgroundColor = UIColor(red: 21/255, green: 22/255, blue: 33/255, alpha: 1)
-    let notConnectedInnerStrokeColor = UIColor(red: 234/255, green: 46/255, blue: 111/255, alpha: 1)
-    let notConnectedPulsatingFillColor = UIColor(red: 86/255, green: 30/255, blue: 63/255, alpha: 1)
-    let connectedInnerStrokeColor = UIColor(red: 90/255, green: 255/255, blue: 21/255, alpha: 1)
-    let connectedPulsatingFillColor = UIColor(red: 95/255, green: 173/255, blue: 86/255, alpha: 1)
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,24 +60,17 @@ class HomeViewController: UIViewController {
         deviceNameField.font = UIFont.systemFont(ofSize: 25)
         
         //Pulsation Animation Formatting
-        pulseLayer = CAShapeLayer()
         pulseLayer.path = circularPath.cgPath
-        pulseLayer.strokeColor = UIColor.clear.cgColor
-        pulseLayer.fillColor = notConnectedPulsatingFillColor.cgColor//this
-        pulseLayer.lineCap = CAShapeLayerLineCap.round
         pulseLayer.position = view.center
+        pulseLayer.fillColor = UIColor.init(named: "notConnectedPulsatingFillColor")?.cgColor
         view.layer.addSublayer(pulseLayer)
         startPulseAnimation()
         
         //Inner Ring Layer Formatting
-        innerRingLayer = CAShapeLayer()
         innerRingLayer.path = circularPath.cgPath
-        innerRingLayer.lineCap = CAShapeLayerLineCap.round
         innerRingLayer.position = view.center
-        
-        innerRingLayer.strokeColor = notConnectedInnerStrokeColor.cgColor
-        innerRingLayer.lineWidth = 12.5 //this
-        innerRingLayer.fillColor = backgroundColor.cgColor //this
+        innerRingLayer.strokeColor = UIColor(named: "notConnectedInnerStrokeColor")?.cgColor
+        innerRingLayer.lineWidth = 12.5
         view.layer.addSublayer(innerRingLayer)
 
         //Wheel Logo Formatting
@@ -105,27 +108,21 @@ class HomeViewController: UIViewController {
     @objc private func changeStatusUI(){
         if (bluetoothModel.connectedPeripheral == nil || bluetoothModel.connectedPeripheral?.state == .disconnected)
         {
-            pulseLayer.fillColor = notConnectedPulsatingFillColor.cgColor//this
-            innerRingLayer.strokeColor = notConnectedInnerStrokeColor.cgColor
+            pulseLayer.fillColor = UIColor(named: "notConnectedPulsatingFillColor")?.cgColor
+            innerRingLayer.strokeColor = UIColor(named: "notConnectedInnerStrokeColor")?.cgColor
             deviceNameField.text = "Not Connected!"
         }
         else
         {
-            innerRingLayer.strokeColor = connectedInnerStrokeColor.cgColor
-            pulseLayer.fillColor = connectedPulsatingFillColor.cgColor//this
+            innerRingLayer.strokeColor = UIColor(named: "connectedInnerStrokeColor")?.cgColor
+            pulseLayer.fillColor = UIColor(named: "connectedPulsatingFillColor")?.cgColor
             deviceNameField.text = bluetoothModel.connectedPeripheral?.name
         }
     }
     
     //Start Pulse Animation
     private func startPulseAnimation() {
-        let animation = CABasicAnimation(keyPath: "transform.scale")
-        animation.toValue = 1.25
-        animation.duration = 1
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
-        animation.autoreverses = true
-        animation.repeatCount = Float.infinity
-        pulseLayer.add(animation, forKey: "pulsing")
+        pulseLayer.add(animation, forKey: "animation")
     }
     
 

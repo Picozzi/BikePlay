@@ -38,7 +38,6 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
     
     let bluetoothViewController = BluetoothViewController()
     let offlineTableViewController = OfflineTableViewController()
- //   let tileViewController = TileViewController()
     
     private let tableView : UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -63,7 +62,7 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         
         models.append(Sections(title: "Bluetooth",
                                options: [
-                                .staticCell(model: SettingsOption(title: "Helmet", icon: UIImage(named: "bike"), iconBackgroundColor: .systemGreen) {
+                                .staticCell(model: SettingsOption(title: "Helmet", icon: UIImage(named: "helmet"), iconBackgroundColor: .systemGreen) {
                                     
                                     self.navigationController?.pushViewController(self.bluetoothViewController, animated: true)
                                     
@@ -95,13 +94,10 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         let model = models[section]
         return model.title
     }
-    
-    
-    
+        
     func numberOfSections(in tableView: UITableView) -> Int {
         return models.count
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models[section].options.count
@@ -124,8 +120,6 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.configure(with: model)
             return cell
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -134,10 +128,8 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         switch type.self {
         case .staticCell(let model):
             model.handler()
-        case .switchCell(let model):
-            model.handler()
+        case .switchCell(_):
+            break
         }
-        
     }
-    
 }
