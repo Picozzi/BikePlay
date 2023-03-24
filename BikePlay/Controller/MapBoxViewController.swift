@@ -21,6 +21,7 @@ class MapBoxViewController : UIViewController, SearchControllerDelegate {
     let notificationCenter = NotificationCenter.default
     var panelController : MapboxPanelController!
     
+    //Models
     var bluetoothModel = BluetoothModel()
     var offlineStorage = OfflineStorage()
 
