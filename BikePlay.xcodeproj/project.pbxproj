@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		31122A6329AEEFBF00144199 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31122A6229AEEFBF00144199 /* Bluetooth.swift */; };
 		31122A6529AEEFCF00144199 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31122A6429AEEFCF00144199 /* Weather.swift */; };
+		311D908729CEA33500ACB43D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311D908629CEA33500ACB43D /* Settings.swift */; };
 		3132FA9329B40F1600718DCA /* RouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3132FA9229B40F1600718DCA /* RouteTableViewController.swift */; };
 		3132FA9629B4185900718DCA /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3132FA9429B4185900718DCA /* RouteTableViewCell.swift */; };
 		3132FA9729B4185900718DCA /* RouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3132FA9529B4185900718DCA /* RouteTableViewCell.xib */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		31122A6229AEEFBF00144199 /* Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
 		31122A6429AEEFCF00144199 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		311D908629CEA33500ACB43D /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3132FA9229B40F1600718DCA /* RouteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewController.swift; sourceTree = "<group>"; };
 		3132FA9429B4185900718DCA /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		3132FA9529B4185900718DCA /* RouteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTableViewCell.xib; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				31122A6429AEEFCF00144199 /* Weather.swift */,
 				31CEE4E829AF0CA400E10583 /* Location.swift */,
 				31639C9F29C3A794006863E9 /* OfflineStorage.swift */,
+				311D908629CEA33500ACB43D /* Settings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				3161BA7A29AE951F00DAB8F6 /* HomeViewController.swift in Sources */,
 				31122A6329AEEFBF00144199 /* Bluetooth.swift in Sources */,
 				31D25E1429C4E3E4009793C0 /* TileViewController.swift in Sources */,
+				311D908729CEA33500ACB43D /* Settings.swift in Sources */,
 				319F5C9529837818002DB5E5 /* SheetTableViewCell.swift in Sources */,
 				3132FA9329B40F1600718DCA /* RouteTableViewController.swift in Sources */,
 				3132FA9629B4185900718DCA /* RouteTableViewCell.swift in Sources */,

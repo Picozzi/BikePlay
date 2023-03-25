@@ -13,7 +13,7 @@ class AppSettingSwitchTableViewCell: UITableViewCell {
     
     static let identifier = "AppSettingSwitchTableViewCell"
     
-    private let iconContainer : UIView = {
+    let iconContainer : UIView = {
         let view = UIView()
         view.clipsToBounds = true
         view.layer.cornerRadius = 10
@@ -21,21 +21,20 @@ class AppSettingSwitchTableViewCell: UITableViewCell {
         return view
     }()
     
-    
-    private let iconImageView: UIImageView = {
+    let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    private let label : UILabel = {
+    let label : UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         return label
     }()
     
-    private let toggle : UISwitch = {
+    let toggle : UISwitch = {
         let toggle = UISwitch()
         toggle.addTarget(self, action: #selector(toggledAction), for: .valueChanged)
         return toggle
@@ -62,7 +61,10 @@ class AppSettingSwitchTableViewCell: UITableViewCell {
         iconContainer.frame = CGRect(x: 10, y: 6, width: size, height: size)
         
         let imageSize : CGFloat = size/1.5
-        iconImageView.frame = CGRect(x: (iconContainer.frame.size.width-imageSize)/2, y: (iconContainer.frame.size.height-imageSize)/2, width: imageSize, height: imageSize)
+        let image_x : CGFloat = (iconContainer.frame.size.width-imageSize)/2
+        let image_y : CGFloat = (iconContainer.frame.size.height-imageSize)/2
+        
+        iconImageView.frame = CGRect(x: image_x, y: image_y, width: imageSize, height: imageSize)
         
         toggle.sizeToFit()
         toggle.frame = CGRect(x: contentView.frame.size.width - toggle.frame.size.width - 10, y: (contentView.frame.size.height - toggle.frame.size.height)/2, width: toggle.frame.size.width, height: toggle.frame.size.height)
@@ -84,14 +86,7 @@ class AppSettingSwitchTableViewCell: UITableViewCell {
         iconContainer.backgroundColor = nil
         toggle.isOn = false
     }
-    
-    public func configure(with model: SettingsSwitchOption) {
-        label.text = model.title
-        iconImageView.image = model.icon
-        iconContainer.backgroundColor = model.iconBackgroundColor
-        toggle.isOn = model.isOn
-    }
-    
+
     @objc func toggledAction(sender: UISwitch){
             if sender.isOn == true {
                 UIApplication.shared.isIdleTimerDisabled = true
