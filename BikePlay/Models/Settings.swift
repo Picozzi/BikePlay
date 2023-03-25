@@ -16,7 +16,6 @@ public struct SettingSections {
 public enum CellType {
     case normalCell
     case toggleCell
-    
 }
 
 public struct SettingCell {

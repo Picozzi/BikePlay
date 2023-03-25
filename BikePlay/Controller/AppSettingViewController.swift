@@ -9,31 +9,6 @@
 
 import UIKit
 
-//struct Sections {
-//    let title : String
-//    let options : [SettingsOptionType]
-//}
-//
-//enum SettingsOptionType {
-//    case staticCell(model: SettingsOption)
-//    case switchCell(model: SettingsSwitchOption)
-//}
-//
-//struct SettingsSwitchOption {
-//    let title : String
-//    let icon: UIImage?
-//    let iconBackgroundColor : UIColor
-//    let handler : (() -> Void)
-//    var isOn: Bool
-//}
-//
-//struct SettingsOption {
-//    let title : String
-//    let icon: UIImage?
-//    let iconBackgroundColor : UIColor
-//    let handler : (() -> Void)
-//}
-
 class AppSettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let bluetoothViewController = BluetoothViewController()
