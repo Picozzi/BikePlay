@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Reading Week Hackathon!">
+  <title>Build Log - Week 6 | BikePlay</title>
+  <link rel="icon" href="../../assets/app-icon.png" type="image/png">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../assets/app-icon.png" width="30" height="30" alt="">BikePlay
+      </a>
+      <nav aria-label="Main navigation"><a href="../../index.html">Home</a> <a href="../../about/index.html">Meet the Team</a> <a href="../../technical-specifications/index.html">Technical Specifications</a> <a href="../../build-log/index.html" aria-current="location">Build Log</a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <article class="shell post">
+      <header class="post-heading">
+        <a class="back-link" href="../../build-log/index.html">All build logs</a>
+        <h1>Build Log - Week 6</h1>
+        <time datetime="2023-02-24">February 24, 2023</time>
+      </header>
+      <div class="post-body"><p>This past week, lots of progress was made on BikePlay - it's almost complete!</p>
+<p>All 3D prints for both projection system modules are complete and assembled; they all fit together perfectly. After assembling them, the projection system modules were mounted to the helmet to begin testing - see below for some pictures. The 3D prints for all of the controller module components are currently being printed and will be ready for pick-up first thing Monday morning.</p>
+<div class="post-gallery"><a href="../../images/projection1.jpg"><img src="../../images/projection1.jpg" alt="Build Log - Week 6, image 1. Open full size." loading="lazy" decoding="async"></a><a href="../../images/projection-on-helmet3-d71d4f5e.jpg"><img src="../../images/projection-on-helmet3-d71d4f5e.jpg" alt="Build Log - Week 6, image 2. Open full size." loading="lazy" decoding="async"></a><a href="../../images/projection-on-helmet2.jpg"><img src="../../images/projection-on-helmet2.jpg" alt="Build Log - Week 6, image 3. Open full size." loading="lazy" decoding="async"></a></div>
+<p>The polarized sheet we ordered was also attached to the visor this week. During testing, we determined that while the images were visible on the visor, there was still too much light passing through for them to be readable when outside on a sunny day. To solve this problem, we attached a second polarized sheet to the other side of the visor at an angle relative to the first sheet to reduce the amount of light passing through. With both sheets attached, the user can still properly see through the visor and can now read the projections - even when looking at the sky on a sunny day! A few photos of the polarized sheet and our testing are shown below.</p>
+<div class="post-gallery"><a href="../../images/visor-with-tint2.jpg"><img src="../../images/visor-with-tint2.jpg" alt="Build Log - Week 6, image 4. Open full size." loading="lazy" decoding="async"></a></div>
+<p>To ensure the visor isn’t too dark at night or in overcast weather, a second visor will be laser cut and a single polarized sheet will be attached to it. Since the visor is removable, a user will be able to swap visors for different lighting conditions as needed.</p>
+<p><br><br></p>
+<p>Soldering of the OLEDs and the RPi were also completed and both OLEDs were mounted within their respective projection modules. This allowed us to begin testing the helmet with both projection modules at the same time!</p>
+<p>The new battery charging circuit was also tested. We were able to read the charge of the battery within 0.001 V and output it onto an OLED as both a percentage and as a battery icon. To ensure that all information can be displayed in a readable font size, we’ve decided to display just the battery icon. See below for a picture!</p>
+<p>Communication testing between the app and the RPi pico also began. Over BLE, we were able to send a direction from the app and receive on the RPi!</p>
+<p>On the app itself, the time and the weather functionalities have also been added in. Preliminary test results show that we should be able to send all the information (directions, time, and weather) to the RPi. The status page, which tells the user whether the helmet and the app are paired, was also completed. A screenshot of this page is shown below.</p>
+<div class="post-gallery"><a href="../../images/img-18ad6c261392-1.jpeg"><img src="../../images/img-18ad6c261392-1.jpeg" alt="Build Log - Week 6, image 5. Open full size." loading="lazy" decoding="async"></a></div></div>
+      <nav class="post-nav" aria-label="Adjacent build logs"><a href="../../build-log/i0v6q4go04890adeneg6n22q87gccx-2p7wj-7m7db-rc6rx/index.html"><span>Previous post</span>Build Log - Week 5</a><a href="../../build-log/i0v6q4go04890adeneg6n22q87gccx-2p7wj-7m7db-rc6rx-rsewk-9d5a8/index.html"><span>Next post</span>Build Log - Week 7</a></nav>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a class="brand" href="../../index.html">BikePlay</a>
+      <p>University of Waterloo Mechatronics Engineering Capstone</p>
+    </div>
+  </footer>
+</body>
+</html>
